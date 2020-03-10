@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Froala playground</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
+    <!-- <link href="https://editor-latest.s3.amazonaws.com/v3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://editor-latest.s3.amazonaws.com/v3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://editor-latest.s3.amazonaws.com/v3/js/froala_editor.pkgd.min.js"></script> -->
+
+
+
+  </head>
+  <body>
+    <h1>Froala Playground</h1>
+    <br>
+    <p>Content:</p>
+    <br>
+    <pre id="content"></pre>
+    <br>
+    <p>Content (beautified):</p>
+    <br>
+    <pre id="contentBeautiful"></pre>
+    <br><br>
+    <div id="example"></div>
+
+    <script>
+
+      function updateContent() {
+        var editor = this;
+        var html = editor.html.get();
+        $('#content').text(html);
+        $('#contentBeautiful').text(editor.codeBeautifier.run(html));
+      }
+
+      var editor = new FroalaEditor('#example', {
+        attribution: false,
+        language: {en: 'en_us', nl: 'nl', de: 'de', fr: 'fr', pt: 'pt_pt', zh: 'zh_cn', es: 'es'}['en'],
+        imageMaxSize: 1024 * 1024 * 5,
+        imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif'],
+        imageInsertButtons: ['imageUpload'],
+        videoUpload: false,
+        fileUpload: true,
+        fileUploadParam: 'upload[file]',
+        fileUploadURL: '/uploads',
+        fileUploadParams: {
+          'upload[target]': 'wysiwyg_file',
+          authenticity_token: $('meta[name="csrf-token"]').attr('content')
+        },
+        fileMaxSize: 1024 * 1024 * 10,
+        htmlAllowedTags: ['div', 'br', 'b', 'strong', 'sub', 'sup', 'em', 'i', 'u', 's', 'ul', 'ol', 'li', 'a', 'img', 'p', 'span',
+          'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'table', 'thead', 'tbody', 'td', 'tr', 'tfoot', 'hr'],
+        htmlAllowedAttrs: ['href', 'src', 'target', 'class', 'style'],
+        pasteDeniedTags: ['img', 'video'],
+        pasteDeniedAttrs: ['class', 'style'],
+        pastePlain: true,
+        charCounterMax: this.charLimit || -1,
+        placeholderText: this.placeholder || '', // must be text, not a translation label
+        htmlExecuteScripts: false,
+        heightMin: {regular: null, medium: 100, large: 200}['regular'],
+        linkAlwaysBlank: true,
+        linkAlwaysNoFollow: true,
+        linkEditButtons: ['linkOpen', 'linkEdit', 'linkRemove'],
+        lineBreakerTags: ['table', 'hr', 'form', 'img'],
+        emoticonsUseImage: false, // use unicode text
+        events: {
+          initialized: updateContent,
+          contentChanged: updateContent
+        },
+      });
+    </script>
+  </body>
+</html>
+
+
+
