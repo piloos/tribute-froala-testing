@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <h1>2. Tribute JS on a textarea in a scrollable div, menuContainer direct wrapper around textarea</h1>
+    <h1>6. Tribute JS on a contenteditable in a scrollable div, no menuContainer specified</h1>
     <br>
 
     <div class="mb-5">
@@ -42,7 +42,7 @@
 
     <div style="overflow-y:auto;height:400px;">
 
-      <div>
+      <div class="mb-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing. Purus semper eget duis at. Hendrerit gravida rutrum quisque non tellus orci ac. Tincidunt ornare massa eget egestas. Justo eget magna fermentum iaculis. Tempus urna et pharetra pharetra massa massa. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Sed vulputate mi sit amet mauris. Lorem donec massa sapien faucibus et molestie ac feugiat. Ut venenatis tellus in metus vulputate eu. Non odio euismod lacinia at quis. At tempor commodo ullamcorper a lacus vestibulum. Non diam phasellus vestibulum lorem sed risus ultricies. Massa enim nec dui nunc mattis enim ut tellus. Felis eget nunc lobortis mattis aliquam.
 
           Vitae elementum curabitur vitae nunc. Morbi leo urna molestie at elementum. Adipiscing tristique risus nec feugiat in fermentum posuere urna. Cursus in hac habitasse platea dictumst quisque sagittis purus. Senectus et netus et malesuada. Nunc vel risus commodo viverra maecenas. Natoque penatibus et magnis dis parturient montes nascetur. Vestibulum lectus mauris ultrices eros in cursus turpis massa. Nam at lectus urna duis convallis. Nisi vitae suscipit tellus mauris a diam. Turpis nunc eget lorem dolor. In tellus integer feugiat scelerisque varius. Libero volutpat sed cras ornare arcu dui vivamus. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Enim praesent elementum facilisis leo vel fringilla est ullamcorper eget.
@@ -54,13 +54,11 @@
           Neque sodales ut etiam sit amet nisl purus. Suspendisse sed nisi lacus sed viverra tellus in hac. Tortor at risus viverra adipiscing at in tellus. Suscipit tellus mauris a diam. Dolor morbi non arcu risus quis varius quam. Orci a scelerisque purus semper eget duis. Amet purus gravida quis blandit turpis cursus in hac. Donec ac odio tempor orci dapibus ultrices. Duis convallis convallis tellus id interdum velit laoreet id. Non arcu risus quis varius quam.
       </div>
 
-      <form>
-        <div class="form-group">
-          <div class="anchor-tribute" style="position:relative;">
-            <textarea class="form-control" id="myInput" rows="1"></textarea>
-          </div>
+      <div class="anchor-tribute" style="position:relative;">
+        <div contenteditable="true" id="myInput">
+          <p>Type here</p>
         </div>
-      </form>
+      </div>
 
       <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing. Purus semper eget duis at. Hendrerit gravida rutrum quisque non tellus orci ac. Tincidunt ornare massa eget egestas. Justo eget magna fermentum iaculis. Tempus urna et pharetra pharetra massa massa. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Sed vulputate mi sit amet mauris. Lorem donec massa sapien faucibus et molestie ac feugiat. Ut venenatis tellus in metus vulputate eu. Non odio euismod lacinia at quis. At tempor commodo ullamcorper a lacus vestibulum. Non diam phasellus vestibulum lorem sed risus ultricies. Massa enim nec dui nunc mattis enim ut tellus. Felis eget nunc lobortis mattis aliquam.
@@ -78,13 +76,12 @@
 
     <script>
 
-
       var tribute = new Tribute({
         values: [
           { key: "Phil Heartman", value: "pheartman" },
           { key: "Gordon Ramsey", value: "gramsey" }
         ],
-        menuContainer: $('#myInput').closest('.anchor-tribute')[0]
+        //menuContainer: $('#myInput').closest('.anchor-tribute')[0]
       });
 
       tribute.attach($('#myInput')[0]);
